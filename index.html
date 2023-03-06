@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>Auth</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,14 +26,44 @@
 <body>
 
 <main>
-  <div class="comment_container container">
-    <form name="commentForm" action="" class="create_comment">
-      <input type="text" class="name" placeholder="Enter name">
-      <input type="text" class="content-text">
-      <input type="date" class="date_created">
-      <input type="submit" class="submit_form">
+  <div id="auth-block">
+    <form class = "auth-form">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      <br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <br>
+      <button type="button" onclick="login()">Login</button>
     </form>
+    <p id="auth-message"></p>
   </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      fetch("/login", {
+        method: "POST",
+        body: JSON.stringify({username, password}),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(response => {
+          if (response.ok) {
+            window.location.href = "/dashboard";
+          } else {
+            document.getElementById("auth-message").textContent = "Invalid username or password";
+          }
+        })
+        .catch(error => {
+          document.getElementById("auth-message").textContent = "Something went wrong. Please try again later.";
+        });
+    }
+  </script>
+
 </main>
 
 

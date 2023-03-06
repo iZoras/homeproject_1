@@ -1,38 +1,58 @@
+@use 'comments';
+
 .body{
 
 }
 
-
-
-.comment_container{
-  border: 1px solid orange;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#auth-block {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-
-.create_comment{
+.auth-form {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  padding: 10px;
-
-  .content-text{
-    width: 480px;
-    height: 200px;
-  }
-
-  input{
-    background-color: white;
-    border: 1px solid black;
-    margin-bottom: 10px;
-    &:last-child{
-      width: 100px;
-      margin: 0 auto 0 auto;
-    }
-  }
 }
+
+label {
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0069d9;
+}
+
+#auth-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+
+
+
+
 
 
 
