@@ -1,0 +1,67 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  font-size: 2em;
+  text-align: center;
+}
+
+#search-form {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#search-input {
+  font-size: 1.2em;
+  padding: 10px;
+  width: 400px;
+}
+
+#search-form button {
+  font-size: 1.2em;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#search-form button:hover {
+  background-color: #555;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+thead {
+  background-color: #333;
+  color: #fff;
+}
+
+th {
+  padding: 10px;
+  cursor: pointer;
+}
+
+th.sort-asc::after {
+  content: " ▲";
+}
+
+th.sort-desc::after {
+  content: " ▼";
+}
+
+td, th {
+  border: 1px solid #ccc;
+  text-align: left;
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
