@@ -6,7 +6,7 @@
 }
 
 /* Style for the form */
-form {
+.comment-form {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -31,7 +31,7 @@ input[type="checkbox"] {
   margin-top: 5px;
 }
 
-/* Style for the submit button */
+
 button[type="submit"] {
   border: none;
   background-color: #007bff;
@@ -45,7 +45,7 @@ button[type="submit"]:hover {
   background-color: #0069d9;
 }
 
-/* Style for the comments list */
+
 #comments-list {
   list-style-type: none;
   margin: 0;

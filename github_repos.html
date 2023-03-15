@@ -17,10 +17,8 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function() {
-      // Default search query
-      var query = "stars:>0";
+      let query = "stars:>0";
 
-      // Function to retrieve search results and update table
       function searchRepositories() {
         $.ajax({
           url: "https://api.github.com/search/repositories",
@@ -31,11 +29,11 @@
             order: $("#sort-order").val()
           },
           success: function(data) {
-            var repos = data.items;
-            var table = $("#repo-table tbody");
+            let repos = data.items;
+            let table = $("#repo-table tbody");
             table.empty();
             $.each(repos, function(index, repo) {
-              var row = $("<tr>").appendTo(table);
+              let row = $("<tr>").appendTo(table);
               $("<td>").text(repo.name).appendTo(row);
               $("<td>").text(repo.description).appendTo(row);
               $("<td>").text(repo.stargazers_count).appendTo(row);
@@ -48,31 +46,28 @@
         });
       }
 
-      // Update search query and retrieve new results when form is submitted
       $("#search-form").submit(function(event) {
         event.preventDefault();
         query = $("#search-input").val();
         searchRepositories();
       });
 
-      // Sort table by column when header is clicked
       $("th").click(function() {
         $("th").not(this).removeClass("sort-asc sort-desc");
-        var order = $(this).hasClass("sort-asc") ? "desc" : "asc";
+        let order = $(this).hasClass("sort-asc") ? "desc" : "asc";
         $(this).removeClass(order == "asc" ? "sort-desc" : "sort-asc").addClass("sort-" + order);
         $("#sort-select").val($(this).attr("data-sort"));
         $("#sort-order").val(order);
         searchRepositories();
       });
 
-      // Initial search to display default results
       searchRepositories();
     });
   </script>
 </head>
 <body>
 <div>
-  <form>
+  <form class="gh-form">
     <label for="search-input">Поиск репозиториев Github по подстроке:</label>
     <input type="text" id="search-input" name="search-input" placeholder="Введите подстроку для поиска" />
     <button type="submit">Искать</button>

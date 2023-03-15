@@ -18,7 +18,7 @@
     <label for="timestamp-checkbox">Add timestamp:</label>
     <input type="checkbox" id="timestamp-checkbox" name="timestamp">
     <br>
-    <button type="submit" id="submit-button"></button>
+    <button type="submit" id="submit-button">Send</button>
   </form>
   <ul id="comments-list"></ul>
 </div>
@@ -33,6 +33,8 @@
   function addComment(name, comment, timestamp) {
     const li = document.createElement("li");
     const header = document.createElement("h4");
+    const btn = document.createElement("button")
+
     header.textContent = name;
     if (timestamp) {
       const timestampText = document.createTextNode(" - " + timestamp);
@@ -43,6 +45,9 @@
     paragraph.textContent = comment;
     li.appendChild(paragraph);
     commentsList.insertBefore(li, commentsList.firstChild);
+    li.appendChild(btn);
+    btn.textContent = "remove";
+
   }
 
   function handleSubmit(event) {
