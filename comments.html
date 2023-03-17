@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Comments block</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/comments.css">
 </head>
 <body>
 
@@ -15,13 +15,14 @@
     <label for="comment-input">Comment:</label>
     <textarea id="comment-input" name="comment" rows="5" required></textarea>
     <br>
-    <label for="timestamp-checkbox">Add timestamp:</label>
+    <label for="timestamp-checkbox" class = "timestamp">Add timestamp:</label>
     <input type="checkbox" id="timestamp-checkbox" name="timestamp">
     <br>
     <button type="submit" id="submit-button">Send</button>
   </form>
   <ul id="comments-list"></ul>
 </div>
+
 
 <script>
   const form = document.getElementById("comment-form");
@@ -30,10 +31,32 @@
   const timestampCheckbox = document.getElementById("timestamp-checkbox");
   const commentsList = document.getElementById("comments-list");
 
+
+
+  function like(likeCount, checked) {
+    if (checked) {
+      return likeCount += 1;
+    } else {
+      return likeCount -= 1;
+    }
+  }
+
   function addComment(name, comment, timestamp) {
     const li = document.createElement("li");
     const header = document.createElement("h4");
-    const btn = document.createElement("button")
+    const removeBtn = document.createElement("button");
+    removeBtn.className = 'removeBtn';
+    const likeBtn = document.createElement('input');
+    likeBtn.type = 'checkbox';
+    const randID = Math.random();
+    likeBtn.id = `${randID}`;
+
+    const labelForLike = document.createElement("label");
+    labelForLike.htmlFor = `${randID}`;
+    labelForLike.className = `likeBtn`;
+
+    const container = document.createElement("div");
+    container.className = "container";
 
     header.textContent = name;
     if (timestamp) {
@@ -45,16 +68,41 @@
     paragraph.textContent = comment;
     li.appendChild(paragraph);
     commentsList.insertBefore(li, commentsList.firstChild);
-    li.appendChild(btn);
-    btn.textContent = "remove";
 
+    li.appendChild(container);
+
+    container.appendChild(labelForLike);
+    container.appendChild(likeBtn);
+
+
+    let likeCount = Math.round(Math.random()*10);
+    const likeCountElement = document.createElement("span");
+    if (likeCount) {
+      likeCountElement.textContent = `${likeCount}`;
+    }
+    container.appendChild(likeCountElement);
+
+    container.appendChild(removeBtn);
+
+    removeBtn.addEventListener("click", function () {
+      li.remove();
+    });
+
+    likeBtn.addEventListener('click', function () {
+      likeCount = like(likeCount, likeBtn.checked);
+      likeCountElement.textContent = `${likeCount}`;
+      if (!likeCount) {
+        likeCountElement.textContent = '';
+      }
+      console.log(likeCount);
+    })
   }
 
   function handleSubmit(event) {
     event.preventDefault();
     const name = nameInput.value.trim();
     const comment = commentInput.value.trim();
-    const timestamp = timestampCheckbox.checked ? new Date().toLocaleString() : null;
+    const timestamp = timestampCheckbox.checked ? new Date().toLocaleString().split(',')[0] : null;
     if (name && comment) {
       addComment(name, comment, timestamp);
       form.reset();

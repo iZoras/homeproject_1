@@ -28,7 +28,13 @@ textarea {
 }
 
 input[type="checkbox"] {
-  margin-top: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#timestamp-checkbox{
+  -webkit-appearance: checkbox;
 }
 
 
@@ -39,6 +45,7 @@ button[type="submit"] {
   border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
+  margin-bottom: 15px;
 }
 
 button[type="submit"]:hover {
@@ -53,10 +60,21 @@ button[type="submit"]:hover {
 }
 
 li {
+  display: flex;
+  flex-direction: column;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 10px;
   padding: 10px;
+}
+
+li .container {
+  display: flex;
+  align-items: center;
+}
+
+.container > .removeBtn {
+  margin: 0 0 0 auto;
 }
 
 h4 {
@@ -66,3 +84,32 @@ h4 {
 p {
   margin: 0;
 }
+
+
+.removeBtn {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+
+  border: none;
+  background-size: contain;
+  background-image: url("../img/icons8-garbage-can-91.png");
+}
+
+.likeBtn + input[type = "checkbox"] {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-image: url("../img/heart.png");
+}
+
+.likeBtn + input[type = "checkbox"]:checked {
+  background-image: url("../img/heartfilled.png");
+}
+
+
+
+
+
+

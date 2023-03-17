@@ -1,0 +1,107 @@
+/* Style for the comments block */
+#comments-block {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Style for the form */
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type=text],
+textarea {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type=checkbox] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#timestamp-checkbox {
+  -webkit-appearance: checkbox;
+}
+
+button[type=submit] {
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+button[type=submit]:hover {
+  background-color: #0069d9;
+}
+
+#comments-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+li .container {
+  display: flex;
+  align-items: center;
+}
+
+.container > .removeBtn {
+  margin: 0 0 0 auto;
+}
+
+h4 {
+  margin-top: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.removeBtn {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: none;
+  background-size: contain;
+  background-image: url("../img/icons8-garbage-can-91.png");
+}
+
+.likeBtn + input[type=checkbox] {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-image: url("../img/heart.png");
+}
+
+.likeBtn + input[type=checkbox]:checked {
+  background-image: url("../img/heartfilled.png");
+}
+
+/*# sourceMappingURL=comments.css.map */
